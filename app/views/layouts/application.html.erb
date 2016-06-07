@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= link_to("Home", root_path) %>
+|
+<%= link_to("About Us", about_path) %>
+|
+<a href="<%= greet_path("Eric") %>">Greet</a>
+|
+<%= link_to("Cowsay", cowsay_path) %>
+|
+<%= link_to "Temperature Converter", temp_converter_path %>
+<hr>
 <%= yield %>
 
 </body>

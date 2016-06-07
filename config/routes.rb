@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  # This is a route that specifies if we get a request that has a GET HTTP verb with '/about' url, use the HomeController with about action
+  get "/about" => "home#about"
+  root "home#index"
+  get "/greet/:name" => "home#greet", as: :greet
+
+  get "/cowsay" => "cowsay#index"
+  post "/cowsay" => "cowsay#create", as: :cowsay_submit
+
+  get "/temp_converter" => "temp#index"
+  post "/temp_converter" => "temp#create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
