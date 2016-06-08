@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   get "/temp_converter" => "temp#index"
   post "/temp_converter" => "temp#create"
+
+  get "/bill_splitter" => "bill_splitter#index"
+  post "/bill_splitter" => "bill_splitter#split"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

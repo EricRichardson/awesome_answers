@@ -1,0 +1,2 @@
+module BillSplitterHelper
+end

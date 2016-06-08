@@ -1,0 +1,25 @@
+<h1>Bill Splitter</h1>
+
+  <div class="form">
+    <%= form_tag bill_splitter_path do %>
+      <%= label_tag "bill_total" %>
+      <%= text_field_tag :bill_total, @bill, placeholder: "e.g. 34.54" %>
+
+      <%= label_tag "tax" %>
+      <%= text_field_tag :tax, @tax, placeholder: "e.g. 15"%>
+
+      <%= label_tag "tip" %>
+      <%= text_field_tag :tip, @tip, placeholder: "e.g. 15"%>
+
+      <%= label_tag "people" %>
+      <%= text_field_tag :people, @people, placeholder: "e.g. 4"%>
+
+      <%= submit_tag :Split! %>
+    <% end %>
+  </div>
+
+  <div class="output">
+    <% if @total %>
+      Each person pays: $<%= @total %>
+    <% end %>
+  </div>

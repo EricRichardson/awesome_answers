@@ -5,7 +5,8 @@
   <%= submit_tag "Convert" %>
 <% end %>
 
-<% if @fahrenheit %>
-The converted temperatrue is
-<%= @fahrenheit %>
+<% if @error %>
+  <%= @error %>
+<% elsif @fahrenheit %>
+  <%= @temp %>&deg;C is <%= @fahrenheit %>&deg;F
 <% end %>
