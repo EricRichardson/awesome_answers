@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "/name_picker" => "name_picker#index"
+  post "/name_picker" => "name_picker#pick"
+
   # This is a route that specifies if we get a request that has a GET HTTP verb with '/about' url, use the HomeController with about action
   get "/about" => "home#about"
   root "home#index"

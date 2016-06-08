@@ -1,0 +1,2 @@
+module NamePickerHelper
+end

@@ -1,0 +1,11 @@
+<h1>NamePicker</h1>
+<h2>Enter a list of comma seperated names to pick a winner</h2>
+
+<%= form_tag name_picker_path do %>
+  <%= text_area_tag :names, nil, rows: 8, cols: 50, placeholder: "Enter comma seperated name" %>
+  <%= submit_tag %>
+<% end %>
+
+ <% if @winner %>
+  The winner is: <%= @winner %>
+<% end %>
