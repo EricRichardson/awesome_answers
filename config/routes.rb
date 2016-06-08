@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   get "/bill_splitter" => "bill_splitter#index"
   post "/bill_splitter" => "bill_splitter#split"
+
+  get "/admin/questions" => "questions#index"
+
+  namespace :admin do
+    resources :questions
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
