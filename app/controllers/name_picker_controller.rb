@@ -4,7 +4,7 @@ class NamePickerController < ApplicationController
 
   def pick
     names = params[:names].split(',')
-    @winner = names[rand(names.length)].capitalize
+    @winner = names[rand(names.length)]
     render :index
   end
 end

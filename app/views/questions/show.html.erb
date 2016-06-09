@@ -1,6 +1,8 @@
-<h1><%= @question.title.titleize %></h1>
-Views: <%= @question.view_count %>
-<p><%= @question.body %></p>
-<%= link_to "Edit", edit_question_path(@question) %>
-<%= link_to "Delete", question_path(@question), method: :delete,
-                                                data: {confirm: "Are you sure?"} %>
+<div class="question">
+  <h1><%= @question.title.titleize %></h1>
+  <div class="view-count">Views: <%= @question.view_count %></div>
+  <p><%= @question.body %></p>
+  <%= link_to "Edit", edit_question_path(@question) %>
+  <%= link_to "Delete", question_path(@question), method: :delete,
+                                                  data: {confirm: "Are you sure?"} %>
+</div>

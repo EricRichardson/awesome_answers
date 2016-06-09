@@ -2,6 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+  width: 100%;
+}
+
+body {
+  background-color: #c5c5ac;
+  color: #25252c;
+}
+
+.view-count {
+  margin-top: -20px;
+  font-size: 0.8em;
+}
+.question, form {
+  padding: 15px;
+  border: 1px solid black;
+  background-color: #f5f5dc;
+  box-shadow: 2px 2px 3px grey;
+  width: 90%;
+  margin: auto;
+}
+
 .field_with_errors input {
   border-color: red;
+}
+
+input, label {
+  display: block;
+}
+
+input {
+  width: 90%;
+  border-radius: 5px;
+}
+
+textarea{
+  width: 90%;
+  height: 200px;
+  border-radius: 5px;
+}
+
+input[type="submit"]{
+  background-color: #BBB;
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px  darkgrey;
+}
+
+nav {
+  padding: 3px;
+  border-bottom: 1px solid darkgrey;
 }

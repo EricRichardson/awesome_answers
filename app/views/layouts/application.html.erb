@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AwesomeAnswers</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Awesome Answers</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to("Home", root_path) %>
-|
-<%= link_to("About Us", about_path) %>
-|
-<a href="<%= greet_path("Eric") %>">Greet</a>
-|
-<%= link_to("Cowsay", cowsay_path) %>
-|
-<%= link_to "Temperature Converter", temp_converter_path %>
-|
-<%= link_to "Bill Splitter", bill_splitter_path %>
-|
-<%= link_to "Name Picker", name_picker_path %>
-|
-<%= link_to "All Questions", questions_path %>
-<hr>
-<%= yield %>
-
+<nav>
+  <%= link_to("Home", root_path) %>
+  |
+  <%= link_to("About Us", about_path) %>
+  |
+  <a href="<%= greet_path("Eric") %>">Greet</a>
+  |
+  <%= link_to("Cowsay", cowsay_path) %>
+  |
+  <%= link_to "Temperature Converter", temp_converter_path %>
+  |
+  <%= link_to "Bill Splitter", bill_splitter_path %>
+  |
+  <%= link_to "Name Picker", name_picker_path %>
+  |
+  <%= link_to "All Questions", questions_path %>
+</nav>
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>
