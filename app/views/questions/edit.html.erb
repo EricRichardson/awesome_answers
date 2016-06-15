@@ -1,15 +1,3 @@
 <h1>Edit Question</h1>
 
-<%= @question.errors.full_messages.join(", ") %>
-<% # If @question is persisted the form_for helper will make the action submit to the question_path(@question) and it will make the HTTP request PATCH. It will also prepopulate the fields with the DB values %>
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

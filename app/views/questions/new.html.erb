@@ -1,14 +1,3 @@
 <h1>New Question</h1>
-<% # form_for is a Rails helper that expects to be given an ActiveRecord object as a first arguement. If the object is not persisted it will automatically set the action for the form the associated controller create action. In this case it will make the action go to 'questions_path' and it will automatically set the method to "POST" if question has its attributes set it will populate the corresponding page%>
-<%= @question.errors.full_messages.join(", ") %>
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit %>
-<% end %>
+
+<%= render "form" %>
