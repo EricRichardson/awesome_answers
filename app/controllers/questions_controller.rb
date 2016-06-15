@@ -29,7 +29,6 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    question_params = params.require(:question).permit(:title, :body)
     if @question.update question_params
       redirect_to question_path(@question), notice: "Question updated"
     else
@@ -45,7 +44,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :category_id)
   end
 
   def find_question

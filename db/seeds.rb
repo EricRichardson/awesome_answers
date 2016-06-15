@@ -6,11 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+300.times do
+  q = Question.create title:      Faker::Company.bs,
+                      body:       Faker::Hipster.paragraph,
+                      view_count: rand(100)
+  5.times { q.answers.create body: Faker::ChuckNorris.fact } if q.persisted?
+end
 
-
-100.times do
-  Product.create name: Faker::Hacker.noun,
-                 price: Faker::Number.decimal(2),
-                 description: Faker::Hipster.sentence,
-                 sale_price: Faker::Number.decimal(2)
+["Sports", "Art", "Cats", "Technology", "News"].each do |cat|
+  Category.create name: cat
 end
