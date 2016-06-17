@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get "/name_picker" => "name_picker#index"
-  post "/name_picker" => "name_picker#pick"
+
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy] do
+    delete :destroy, on: :collection
+  end
 
   resources :questions do
     # This will define a route that will be '/questions/search'
@@ -44,6 +47,9 @@ Rails.application.routes.draw do
   post "/bill_splitter" => "bill_splitter#split"
 
   get "/admin/questions" => "questions#index"
+
+  get "/name_picker" => "name_picker#index"
+  post "/name_picker" => "name_picker#pick"
 
   namespace :admin do
     resources :questions

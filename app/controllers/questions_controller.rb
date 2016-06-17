@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :update, :destroy, :edit, :update]
+  before_action :authenticate_user!, except: [:show, :index]
 
   def new
     @question = Question.new
@@ -7,6 +8,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new question_params
+    @question.user = current_user
     if @question.save
       flash[:notice] = "Question created!"
       redirect_to question_path @question
@@ -42,6 +44,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def authenticate_user!
+    redirect_to new_session_path, alert: "please sign in" unless user_signed_in?
+  end
 
   def question_params
     params.require(:question).permit(:title, :body, :category_id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615184404) do
+ActiveRecord::Schema.define(version: 20160616185003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(version: 20160615184404) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "price"
-    t.text     "description"
-    t.decimal  "sale_price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -47,12 +38,26 @@ ActiveRecord::Schema.define(version: 20160615184404) do
     t.datetime "updated_at",  null: false
     t.integer  "view_count"
     t.integer  "category_id"
+    t.integer  "user_id"
   end
 
   add_index "questions", ["body"], name: "index_questions_on_body", using: :btree
   add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
   add_index "questions", ["title"], name: "index_questions_on_title", unique: true, using: :btree
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "categories"
+  add_foreign_key "questions", "users"
 end
