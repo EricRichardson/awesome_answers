@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+
+gem 'letter_opener', group: :development
 gem 'kaminari'
 gem "font-awesome-rails"
 gem 'cancancan'

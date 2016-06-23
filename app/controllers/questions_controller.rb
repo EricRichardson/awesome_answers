@@ -43,10 +43,16 @@ class QuestionsController < ApplicationController
     redirect_to questions_path, notice: "Question deleted!"
   end
 
+  def current_user_vote
+    @question.vote_for(current_user)
+  end
+
+  helper_method :current_user_vote
+
   private
 
   def question_params
-    params.require(:question).permit(:title, :body, :category_id)
+    params.require(:question).permit(:title, :body, :category_id, {tag_ids: []})
   end
 
   def find_question

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :votes
+
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   resources :likes, only: [:index]
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy] do
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
+    resources :votes, only: [:create, :update, :destroy]
     resources :likes, only: [:create, :destroy]
     # This will define a route that will be '/questions/search'
     # It will pont to the 'questions#search'

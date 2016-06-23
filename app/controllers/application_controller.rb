@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     redirect_to new_session_path, alert: "please sign in" unless user_signed_in?
   end
+
+  def current_question
+    @current_question ||= Question.find params[:question_id]
+  end
 end
