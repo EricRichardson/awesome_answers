@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-
+  resources :votes
+  resources :likes, only: [:index]
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection
   end
 
   resources :questions do
+    resources :likes, only: [:create, :destroy]
     # This will define a route that will be '/questions/search'
     # It will pont to the 'questions#search'
     # on: :collection makes the route not have an id on it

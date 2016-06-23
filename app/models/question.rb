@@ -6,6 +6,9 @@ class Question < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
   validates(:title, {presence: {message: "must be present!"}, uniqueness: true})
   validates :body, presence: true,
              length:     {minimum: 7},
@@ -32,6 +35,14 @@ class Question < ActiveRecord::Base
 
   def new_first_answer
     answers.order(created_at: :desc)
+  end
+
+  def liked_by?(user)
+    likes.exists?(user: user)
+  end
+
+  def like_for(user)
+    likes.find_by_user_id user
   end
 
   private

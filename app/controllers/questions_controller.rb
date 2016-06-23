@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :update, :destroy, :edit, :update]
-  before_action :authenticate_user!, except: [:show, :index]
-
+  before_action :authenticate_user!, except: [ :index]
+  before_action :authorize_owner, only: [:edit, :update, :destroy]
   def new
     @question = Question.new
   end
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc)
+    @questions = Question.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
@@ -45,15 +45,15 @@ class QuestionsController < ApplicationController
 
   private
 
-  def authenticate_user!
-    redirect_to new_session_path, alert: "please sign in" unless user_signed_in?
-  end
-
   def question_params
     params.require(:question).permit(:title, :body, :category_id)
   end
 
   def find_question
     @question = Question.find params[:id]
+  end
+
+  def authorize_owner
+      redirect_to root_path, alert: "Acess denied" unless can? :manage, @question
   end
 end

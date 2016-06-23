@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :questions, dependent: :nullify
+  has_many :answers, dependent: :nullify
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_questions, through: :likes, source: :question
+  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true
   validates :last_name, presence: true

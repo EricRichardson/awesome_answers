@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-
+gem 'kaminari'
+gem "font-awesome-rails"
+gem 'cancancan'
 gem "faker", github: "stympy/faker"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

@@ -2,25 +2,37 @@
   <h1><%= @question.title.titleize %></h1>
   <div class="view-count">Views: <%= @question.view_count %></div>
   <p>Created By: <%= @question.user.full_name if @question.user %></p>
+
+<% if @question.liked_by?(current_user) %>
+  <%= link_to fa_icon("thumbs-o-down"), question_like_path(@question, @question.like_for(current_user)), method: :delete %>
+<% else %>
+  <%= link_to fa_icon("thumbs-o-up"),
+              question_likes_path(@question),
+              method: :post %>
+<% end %>
   <p><%= @question.body %></p>
-  <%= link_to "Edit", edit_question_path(@question) %>
-  <%= link_to "Delete", question_path(@question), method: :delete,
-                                                  data: {confirm: "Are you sure?"} %>
+  <% if can? :manage, @question %>
+    <%= link_to "Edit", edit_question_path(@question) %>
+    <%= link_to "Delete", question_path(@question), method: :delete,
+                                                    data: {confirm: "Are you sure?"} %>
+    <% end %>
 </div>
 <%= @answer.errors.full_messages.join(', ') %>
 <%= form_for [@question, @answer] do |f| %>
   <%= f.text_area :body %>
   <%= f.submit %>
 <% end %>
-
+ails
 <h2>Answers</h2>
 
 <% @question.answers.each do |ans| %>
   <div>
     <%= ans.body %>
-    <%= link_to "Delete", question_answer_path(@question, ans),
+    <% if can? :manage, ans %>
+      <%= link_to "Delete", question_answer_path(@question, ans),
                          method: :delete,
                          data: {confirm: "Are you sure?"} %>
+    <% end %>
     <hr>
   </div>
 <% end %>

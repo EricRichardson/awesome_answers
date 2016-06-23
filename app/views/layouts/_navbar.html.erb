@@ -10,6 +10,7 @@
   <%= link_to "All Questions", questions_path %>
   |
   <% if user_signed_in? %>
+     <%= link_to "Liked Questions", likes_path %> |
      Hello, <%= current_user.first_name %>
      <%= link_to "Sign Out", sessions_path, method: :delete %>
   <% else %>

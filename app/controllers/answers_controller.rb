@@ -1,9 +1,10 @@
 class AnswersController < ApplicationController
-
+  before_action :authorize_owner, only: [:edit, :destroy, :update]
   def create
     @answer = Answer.new answer_params
     @question = Question.find params[:question_id]
     @answer.question = @question
+    @answer.user = current_user
     if @answer.save
       redirect_to question_path(@question), notice: "Answer created"
     else
@@ -22,5 +23,9 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:body)
+  end
+
+  def authorize_owner
+      redirect_to root_path, alert: "Acess denied" unless can? :manage, @answer
   end
 end
