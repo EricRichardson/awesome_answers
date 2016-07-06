@@ -1,0 +1,5 @@
+// alert("Inside create success partial")
+
+$('#answers').prepend("<%= j( render( '/answers/answer', {answer: @answer} ) ) %>");
+<% @answer = Answer.new %>
+$('#answer-form').html("<%= j render 'form' %>")

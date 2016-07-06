@@ -1,0 +1,5 @@
+<% if @vote %>
+  $('#votes').replaceWith("<%= j render '/questions/votes', question: current_question, current_user_vote: @vote %>")
+<% else %>
+  alert("Error updating your vote. Please refresh the page")
+<% end %>

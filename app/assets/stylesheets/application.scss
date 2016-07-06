@@ -11,9 +11,14 @@
  * file per style scope.
  *
  *= require font-awesome
+
+
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 input {
   display: block;
@@ -21,4 +26,21 @@ input {
 
 .form {
   padding: 10px;
+}
+
+nav {
+  background-color: #44280B;
+  color: white;
+  padding: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.question {
+  height: 250px;
 }

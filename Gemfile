@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 

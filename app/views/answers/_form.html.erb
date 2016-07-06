@@ -1,0 +1,5 @@
+<%= @answer.errors.full_messages.join(', ') %>
+<%= form_for [@question, @answer], remote: true do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>

@@ -22,64 +22,26 @@ Tags: <%= @question.tags.map { |t| t.title.capitalize }.join(', ') %><br>
 
 Likes: <%= @question.likes.count %><br>
 
-<% if @question.voted_up_by?(current_user) %>
+<%= render '/questions/votes', question: @question %>
 
-  <%= link_to "Undo vote up",
-              question_vote_path(@question,
-              current_user_vote),
-              method: :delete,
-              data: {disable_with: "..."} %>
+<p><%= @question.body %></p>
 
-  <%= link_to "Vote down",
-              question_vote_path(@question,
-              current_user_vote, vote: {is_up: false}), method: :patch %>
-
-<% elsif @question.voted_down_by?(current_user) %>
-
-<%= link_to "Vote Up",
-            question_vote_path(@question,
-            current_user_vote, vote: {is_up: true}), method: :patch   %>
-
-<%= link_to "Undo vote down",
-             question_vote_path(@question,
-             current_user_vote),
-             method: :delete,
-             data: {disable_with: "..."}%>
-
-<% else %>
-
-  <%= link_to("Vote up", question_votes_path(@question,
-                         vote: {is_up: true}), method: :post)  %>
-
-  <%= link_to("Vote down", question_votes_path(@question,
-                       vote: {is_up: false}), method: :post)  %>
-
-<% end %>
-  Vote total: <%= @question.vote_sum %>
-  <p><%= @question.body %></p>
   <% if can? :manage, @question %>
     <%= link_to "Edit", edit_question_path(@question) %>
-    <%= link_to "Delete", question_path(@question), method: :delete,
-                                                    data: {confirm: "Are you sure?"} %>
+    <%= link_to "Delete", question_path(@question),
+                          method: :delete,
+                          data: {confirm: "Are you sure?"} %>
   <% end %>
 
 </div>
-<%= @answer.errors.full_messages.join(', ') %>
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.text_area :body %>
-  <%= f.submit %>
-<% end %>
+
+<div id="answer-form">
+  <%= render "/answers/form" %>
+</div>
 
 <h2>Answers</h2>
-
-<% @question.answers.each do |ans| %>
-  <div>
-    <%= ans.body %>
-    <% if can? :manage, ans %>
-      <%= link_to "Delete", question_answer_path(@question, ans),
-                         method: :delete,
-                         data: {confirm: "Are you sure?"} %>
-    <% end %>
-    <hr>
-  </div>
-<% end %>
+<div id="answers">
+  <% @question.answers.each do |ans| %>
+    <%= render "/answers/answer", answer: ans %>
+  <% end %>
+</div>
