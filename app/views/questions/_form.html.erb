@@ -1,20 +1,9 @@
-<%= @question.errors.full_messages.join(", ") %>
+<%= simple_form_for @question do |f| %>
 
-<%= form_for @question do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <div>
-    <%= f.label :tag_ids %>
-    <%= f.collection_check_boxes(:tag_ids, Tag.order(:title), :id, :title) %>
-  </div>
-  <div>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-  </div>
-  <%= f.submit %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.association :category, include_blank: false %>
+  <%= f.association :tags, as: :check_boxes %>
+  <%= f.button :submit %>
+
 <% end %>

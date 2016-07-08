@@ -1,7 +1,8 @@
 class Question < ActiveRecord::Base
-  # has_many helps us set up the association between question model and the answer model. In this case 'has_many' assumes that the answers table contains a field named 'question_id' that is an integer (this is a Rails convention). The dependent option takes values like 'destory' and 'nullify'
-  # 'destroy' will make Rails automatically delete the associated answers before deleteing the question.
-  #'nullify' will make Rails turn 'question_id' values of associated records to NULL before deleting the question
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders, :history]
+
   has_many :answers, dependent: :destroy
   belongs_to :category
   belongs_to :user
@@ -79,7 +80,11 @@ class Question < ActiveRecord::Base
   def vote_sum
     up_votes - down_votes
   end
-  
+  #
+  # def to_param
+  #   "#{id}-#{title}".parameterize
+  # end
+
   private
 
     def set_defaults

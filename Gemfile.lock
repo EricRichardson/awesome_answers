@@ -82,6 +82,8 @@ GEM
     ffi (1.9.10)
     font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
@@ -118,7 +120,10 @@ GEM
       pkg-config (~> 1.1.7)
     pg (0.18.4)
     pkg-config (1.1.7)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -166,6 +171,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -210,6 +218,7 @@ DEPENDENCIES
   delayed_job_web
   faker!
   font-awesome-rails
+  friendly_id
   hirb
   interactive_editor
   jbuilder (~> 2.0)
@@ -217,10 +226,13 @@ DEPENDENCIES
   kaminari
   letter_opener
   pg (~> 0.15)
+  quiet_assets
+  rack-cors
   rails (= 4.2.6)
   rails-erd
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   turbolinks
   uglifier (>= 1.3.0)

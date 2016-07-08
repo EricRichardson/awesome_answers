@@ -1,7 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'friendly_id'
+
+gem 'simple_form'
+gem 'quiet_assets'
+
+gem 'rack-cors', require: 'rack/cors'
+
 gem 'bootstrap-sass'
-gem 'jquery-rails'
 
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
