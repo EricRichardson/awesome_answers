@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+gem "fog-aws"
+gem 'mini_magick'
+gem 'carrierwave'
 
 gem 'friendly_id'
 

@@ -2,6 +2,7 @@
 
   <%= f.input :title %>
   <%= f.input :body %>
+  <%= f.input :image %>
   <%= f.association :category, include_blank: false %>
   <%= f.association :tags, as: :check_boxes %>
   <%= f.button :submit %>

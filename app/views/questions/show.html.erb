@@ -1,8 +1,10 @@
 <div class="question">
   <h1><%= @question.title.titleize %></h1>
-  <div class="view-count">Views: <%= @question.view_count %></div>
+  <div class="view-count">Views: <%= @question.view_count %>
+  </div>
   <p>Created By: <%= @question.user.full_name if @question.user %></p>
 
+  <div class="image"><%= image_tag @question.image.url(:medium) %></div>
 Tags: <%= @question.tags.map { |t| t.title.capitalize }.join(', ') %><br>
 
 <% if @question.liked_by?(current_user) %>
@@ -25,6 +27,8 @@ Likes: <%= @question.likes.count %><br>
 <%= render '/questions/votes', question: @question %>
 
 <p><%= @question.body %></p>
+
+
 
   <% if can? :manage, @question %>
     <%= link_to "Edit", edit_question_path(@question) %>

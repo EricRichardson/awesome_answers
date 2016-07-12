@@ -3,6 +3,8 @@ class Question < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
 
+  mount_uploader :image, ImageUploader
+
   has_many :answers, dependent: :destroy
   belongs_to :category
   belongs_to :user
