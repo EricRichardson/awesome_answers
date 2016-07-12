@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem 'active_model_serializers'
 gem "fog-aws"
 gem 'mini_magick'
 gem 'carrierwave'

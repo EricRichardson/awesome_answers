@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :questions, only: [:index, :show]
+    end
+  end
+
   resources :questions do
     resources :votes, only: [:create, :update, :destroy]
     resources :likes, only: [:create, :destroy]

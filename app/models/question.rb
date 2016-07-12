@@ -87,6 +87,14 @@ class Question < ActiveRecord::Base
   #   "#{id}-#{title}".parameterize
   # end
 
+  # delegate :name, to: :category, prefix: true
+  def category_name
+    category.name
+  end
+
+  delegate :first_name, :last_name, to: :user, prefix: true
+
+
   private
 
     def set_defaults
