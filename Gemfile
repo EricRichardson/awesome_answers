@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'react-rails'
+
+gem 'twitter'
+gem 'omniauth-twitter'
+
 gem 'active_model_serializers'
 gem "fog-aws"
 gem 'mini_magick'

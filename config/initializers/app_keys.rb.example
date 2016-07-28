@@ -1,2 +1,8 @@
-ENV["EMAIL_USER_NAME"] = "USER_NAME"
-ENV["EMAIL_PASSWORD"] = "PASSWORD"
+ENV["EMAIL_USER_NAME"] = 'answerawesome'
+ENV["EMAIL_PASSWORD"] = 'Sup3r$ecret$$'
+
+ENV["S3_ACCESS_KEY"] = 's3 key goes here'
+ENV["S3_SECRET"] = 's3 secret here'
+
+ENV["TWITTER_CONSUMER_KEY"] = 	"twitter consumer"
+ENV["TWITTER_CONSUMER_SECRET"] = 	"consumer secret"

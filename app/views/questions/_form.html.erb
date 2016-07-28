@@ -5,6 +5,9 @@
   <%= f.input :image %>
   <%= f.association :category, include_blank: false %>
   <%= f.association :tags, as: :check_boxes %>
-  <%= f.button :submit %>
+  <% if current_user.using_twitter? && !@question.persisted? %>
+    <%= f.input :tweet_it, as: :boolean %>
+  <% end %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 
 <% end %>

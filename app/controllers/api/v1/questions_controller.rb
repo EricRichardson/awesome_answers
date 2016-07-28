@@ -1,4 +1,4 @@
-class Api::V1::QuestionsController < ApplicationController
+class Api::V1::QuestionsController < Api::BaseController
   DEFAULT_PER_PAGE = 7
 
   def index
@@ -10,4 +10,5 @@ class Api::V1::QuestionsController < ApplicationController
     question_json = ActiveModelSerializers::SerializableResource.new(question)
     render json: {question: question_json}
   end
+
 end

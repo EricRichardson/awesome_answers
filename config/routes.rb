@@ -4,13 +4,19 @@ Rails.application.routes.draw do
 
   resources :likes, only: [:index]
   resources :users, only: [:new, :create]
+  
+  get "/auth/twitter", as: :sign_in_with_twitter
+  get "/auth/twitter/callback" => "callbacks#twitter"
+
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection
   end
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :questions, only: [:index, :show]
+      resources :questions, only: [:index, :show] do
+        resources :answers, only: [:create]
+      end
     end
   end
 

@@ -1,5 +1,7 @@
 class Question < ActiveRecord::Base
 
+  attr_accessor :tweet_it
+  
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
 
