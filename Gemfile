@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'draper'
+
 gem 'react-rails'
 
 gem 'twitter'

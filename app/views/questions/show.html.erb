@@ -1,25 +1,22 @@
 <div class="question">
-  <h1><%= @question.title.titleize %></h1>
-  <div class="view-count">Views: <%= @question.view_count %>
-  </div>
-  <p>Created By: <%= @question.user.full_name if @question.user %></p>
+  <h1><%= @question.title %></h1>
 
-  <div class="image"><%= image_tag @question.image.url(:medium) %></div>
-Tags: <%= @question.tags.map { |t| t.title.capitalize }.join(', ') %><br>
+  <div class="view-count">
+    Views: <%= @question.view_count %>
+  </div>
+
+  <p>Created By: <%= @question.user_name if @question.user %></p>
+
+  <div class="image">
+    <%= image_tag @question.image.url(:medium) %>
+  </div>
+
+  Tags: <%= @question.tags_display %><br>
 
 <% if @question.liked_by?(current_user) %>
-
-  <%= link_to fa_icon("thumbs-o-down"),
-                   question_like_path(@question,
-                   @question.like_for(current_user)),
-                   method: :delete %>
-
+  <%= @question.thumb_down_button %>
 <% else %>
-
-  <%= link_to fa_icon("thumbs-o-up"),
-              question_likes_path(@question),
-              method: :post %>
-
+    <%= @question.thumb_up_button %>
 <% end %>
 
 Likes: <%= @question.likes.count %><br>
