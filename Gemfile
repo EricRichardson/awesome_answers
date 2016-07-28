@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'virtus'
 gem 'draper'
 
 gem 'react-rails'
